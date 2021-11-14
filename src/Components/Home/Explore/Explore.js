@@ -6,7 +6,7 @@ import Product from '../Product/Product';
 const Explore = () => {
     const [products, setProducts] =useState([]) ;
     useEffect( ()=>{
-        fetch('./fakedata.json')
+        fetch('http://localhost:5000/products')
         .then(res=>res.json())
         .then(data => setProducts(data))
     } , [])
@@ -19,7 +19,7 @@ const Explore = () => {
                   {
                       products.map(product=> <Product
                         products={product}
-                        key={product.id}
+                        key={product._id}
                       ></Product>)
                   }
                     
