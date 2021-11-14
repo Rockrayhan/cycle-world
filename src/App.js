@@ -1,7 +1,6 @@
-
+import React from "react";
 import './App.css';
 import Home from './Components/Home/Home';
-import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,6 +13,8 @@ import Purchase from './Components/Purchase/Purchase';
 import Register from './Components/Login/Register';
 import AuthProvider from './Context/AuthProvider/AuthProvider';
 import PrivateRoute from './Components/Login/PrivateRoute/PrivateRoute';
+import AddProducts from "./Components/AddProducts/AddProducts";
+
 function App() {
   return (
     <div className="App">
@@ -28,6 +29,9 @@ function App() {
           </PrivateRoute>
           <Route path="/home">
             <Home></Home>
+          </Route>
+          <Route path="/addproducts">
+           <AddProducts></AddProducts>
           </Route>
           <Route path="/login">
             <Login></Login>
