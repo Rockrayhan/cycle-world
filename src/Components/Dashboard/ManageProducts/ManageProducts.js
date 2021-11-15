@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 const ManageProducts = () => {
     const [data, setData] = useState([])
     useEffect( ()=> {
-        fetch('http://localhost:5000/products')
+        fetch('https://shrouded-oasis-44693.herokuapp.com/products')
         .then (res=>res.json())
         .then(data => setData(data))
     } ,[]);
@@ -13,7 +13,7 @@ const ManageProducts = () => {
 
         if (proceed) {
             window.location.reload();
-            const url = `http://localhost:5000/products/${id}` ;
+            const url = `https://shrouded-oasis-44693.herokuapp.com/products/${id}` ;
         fetch(url, {
             method: 'DELETE'
         })
