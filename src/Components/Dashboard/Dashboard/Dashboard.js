@@ -17,31 +17,28 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { Grid } from '@mui/material';
 import MyOrders from '../MyOrders/MyOrders';
+import useAuth from '../../../Hooks/useAuth';
+import { NavLink } from 'react-router-dom';
+import Button from '@mui/material/Button';
+
 
 const drawerWidth = 240;
 
 function Dashboard(props) {
+
+  const {user , logout} = useAuth() ;
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
+  const {admin} = useAuth();
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
   const drawer = (
     <div>
-      <Toolbar />
-      <Divider />
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
+      
+     
+      
       
       
     </div>
@@ -72,6 +69,49 @@ function Dashboard(props) {
           <Typography variant="h6" noWrap component="div">
             Dashboard
           </Typography>
+         
+         
+          {
+              admin && <Box>  <NavLink to="/manageproducts"> <Button variant="contained"> Manage Products </Button></NavLink> 
+              
+              <NavLink to="/addproducts"> <Button variant="contained"> Add a Product </Button></NavLink>
+
+              <NavLink to="/makeadmin"> <Button variant="contained"> Make Admin </Button></NavLink>
+
+              </Box>
+              
+
+
+            }
+         
+         
+         
+         
+         
+         
+          {
+        user?.email ? 
+          <Box sx={{marginLeft:'50px'}}>
+             
+             <NavLink to="/myorders"> <Button variant="contained"> My Orders </Button></NavLink>
+
+
+             <NavLink to="/review"> <Button variant="contained"> Review </Button></NavLink>
+             <NavLink to="/pay"> <Button variant="contained"> Pay </Button></NavLink>
+
+            <Button onClick={logout} variant="contained"> LogOut </Button> 
+
+            </Box>
+        
+          :
+        <NavLink to="/login"> <Button variant="contained"> Login </Button></NavLink> 
+        
+      } 
+
+
+
+
+
         </Toolbar>
       </AppBar>
       <Box

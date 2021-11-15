@@ -17,6 +17,9 @@ import AddProducts from "./Components/AddProducts/AddProducts";
 import Dashboard from "./Components/Dashboard/Dashboard/Dashboard";
 import MyOrders from "./Components/Dashboard/MyOrders/MyOrders";
 import ManageProducts from "./Components/Dashboard/ManageProducts/ManageProducts";
+import Review from "./Components/Home/Review/Review";
+import Pay from "./Components/Dashboard/Pay/Pay";
+import MakeAdmin from "./Components/Dashboard/MakeAdmin/MakeAdmin";
 
 function App() {
   return (
@@ -44,6 +47,15 @@ function App() {
           </PrivateRoute>
           <PrivateRoute path="/manageproducts">
            <ManageProducts></ManageProducts>
+          </PrivateRoute>
+          <PrivateRoute path="/review">
+           <Review></Review>
+          </PrivateRoute>
+          <PrivateRoute path="/pay">
+           <Pay></Pay>
+          </PrivateRoute>
+          <PrivateRoute path="/makeadmin">
+           <MakeAdmin></MakeAdmin>
           </PrivateRoute>
           <Route path="/login">
             <Login></Login>
