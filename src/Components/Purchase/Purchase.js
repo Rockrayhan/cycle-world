@@ -7,7 +7,20 @@ import useAuth from '../../Hooks/useAuth';
 const Purchase = () => {
 
     const {user} = useAuth() ;
+
+    const initialInfo = {displayName: user.displayName, email : user.email, phone : '', address: '', productName: '' }
+    const [orderInfo, setOrderInfo] = useState(initialInfo) ;
+
+    const handleOnBlur = e => {
+      const field = e.target.name ;
+      const value = e.target.value ;
+      const newInfo = {...orderInfo} ;
+      newInfo[field] = value ;
+      setOrderInfo(newInfo) ;
+    }
+
     const {_id } = useParams();
+
     const [data, setData] = useState([]) 
     useEffect( ()=> {
         fetch('http://localhost:5000/products')
@@ -20,11 +33,23 @@ const Purchase = () => {
 
 
     const handleOrderSubmit = e => {
-
         // collect
+        const order = {
+          ...orderInfo,
+        }
 
         //send
-
+        fetch('http://localhost:5000/orders' , {
+          method: 'POST' ,
+          headers: {
+            'content-type' : 'application/json'
+          },
+          body: JSON.stringify(order)
+        })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data);
+        })
         alert('order confirmed') ;
         e.preventDefault() ;
     }
@@ -46,37 +71,46 @@ const Purchase = () => {
 
         <br />
 
-        <form onSubmit={handleOrderSubmit}>
+        <form className="mb-5" onSubmit={handleOrderSubmit}>
         <TextField
           sx={{width:'70%' , m:1}}
-          disabled
           id="outlined-size-small"
-          defaultValue={exactProduct[0]?.name}
+          defaultValue="Product Name"
           size="small"
+          name="productName"
+          onBlur={handleOnBlur}
           />
         <TextField
           sx={{width:'70%' , m:1}}
           id="outlined-size-small"
           defaultValue={user.displayName}
           size="small"
+          name="displayName"
+          onBlur={handleOnBlur}
           />
         <TextField
           sx={{width:'70%' , m:1}}
           id="outlined-size-small"
           defaultValue='Phone number'
           size="small"
+          name="phone"
+          onBlur={handleOnBlur}
           />
         <TextField
           sx={{width:'70%' , m:1}}
           id="outlined-size-small"
           defaultValue={user.email}
           size="small"
+          name="email"
+          onBlur={handleOnBlur}
           />
         <TextField
           sx={{width:'70%' , m:1}}
           id="outlined-size-small"
           defaultValue='Address'
           size="small"
+          name="address"
+          onBlur={handleOnBlur}
           />
         <br />
         <Button type="submit" variant="contained">Order Now</Button>
