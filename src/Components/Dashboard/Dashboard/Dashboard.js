@@ -15,6 +15,8 @@ import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import { Grid } from '@mui/material';
+import MyOrders from '../MyOrders/MyOrders';
 
 const drawerWidth = 240;
 
@@ -110,7 +112,12 @@ function Dashboard(props) {
       >
         <Toolbar />
         <Typography paragraph>
-          Content HERE
+        <Grid container spacing={2}>
+  <Grid item xs={8}>
+    <MyOrders></MyOrders>
+  </Grid>
+  
+</Grid>
         </Typography>
       </Box>
     </Box>

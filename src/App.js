@@ -15,6 +15,7 @@ import AuthProvider from './Context/AuthProvider/AuthProvider';
 import PrivateRoute from './Components/Login/PrivateRoute/PrivateRoute';
 import AddProducts from "./Components/AddProducts/AddProducts";
 import Dashboard from "./Components/Dashboard/Dashboard/Dashboard";
+import MyOrders from "./Components/Dashboard/MyOrders/MyOrders";
 
 function App() {
   return (
@@ -36,6 +37,9 @@ function App() {
           </PrivateRoute>
           <PrivateRoute path="/dashboard">
            <Dashboard></Dashboard>
+          </PrivateRoute>
+          <PrivateRoute path="/myorders">
+           <MyOrders></MyOrders>
           </PrivateRoute>
           <Route path="/login">
             <Login></Login>

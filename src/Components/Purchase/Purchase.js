@@ -28,6 +28,7 @@ const Purchase = () => {
         .then(data => setData(data))
     } ,[])
     const exactProduct = data.filter(td=>td.id == _id) ;
+    console.log(exactProduct);
     console.log(exactProduct[0]?.name);
     
 

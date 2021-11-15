@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 
 const Product = (props) => {
     const { name,img , description , _id} = props.products ;
+    console.log(props.products);
     return (
         <div className="container">
             <img src={img} alt="" />
