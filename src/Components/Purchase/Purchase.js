@@ -19,17 +19,15 @@ const Purchase = () => {
       setOrderInfo(newInfo) ;
     }
 
-    const {_id } = useParams();
+    const { id } = useParams();
 
-    const [data, setData] = useState([]) 
+    const [data, setData] = useState({}) 
     useEffect( ()=> {
-        fetch('http://localhost:5000/products')
+        fetch(`http://localhost:5000/products/${id}`)
         .then(res=> res.json())
         .then(data => setData(data))
     } ,[])
-    const exactProduct = data.filter(td=>td.id == _id) ;
-    console.log(exactProduct);
-    console.log(exactProduct[0]?.name);
+    console.log(data);
     
 
 
@@ -61,9 +59,9 @@ const Purchase = () => {
 
            
             <br />
-            <h3 >Product name : {exactProduct[0]?.name}</h3>
-            <h6>Description :   {exactProduct[0]?.description} </h6>
-            <img src={exactProduct[0]?.img} alt="" />
+            <h3 >Product name : {data.name} </h3>
+            <h6>Description : {data.description}  </h6>
+            <img src={data.img} alt="" />
 
         <br />
         <br />
@@ -76,7 +74,7 @@ const Purchase = () => {
         <TextField
           sx={{width:'70%' , m:1}}
           id="outlined-size-small"
-          defaultValue="Product Name"
+          defaultValue="product Name"
           size="small"
           name="productName"
           onBlur={handleOnBlur}

@@ -16,6 +16,7 @@ import PrivateRoute from './Components/Login/PrivateRoute/PrivateRoute';
 import AddProducts from "./Components/AddProducts/AddProducts";
 import Dashboard from "./Components/Dashboard/Dashboard/Dashboard";
 import MyOrders from "./Components/Dashboard/MyOrders/MyOrders";
+import ManageProducts from "./Components/Dashboard/ManageProducts/ManageProducts";
 
 function App() {
   return (
@@ -40,6 +41,9 @@ function App() {
           </PrivateRoute>
           <PrivateRoute path="/myorders">
            <MyOrders></MyOrders>
+          </PrivateRoute>
+          <PrivateRoute path="/manageproducts">
+           <ManageProducts></ManageProducts>
           </PrivateRoute>
           <Route path="/login">
             <Login></Login>
