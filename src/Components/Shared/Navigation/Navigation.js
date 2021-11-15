@@ -36,8 +36,12 @@ const Navigation = () => {
        
       {
         user?.email ? 
-          
-        <Button onClick={logout} variant="contained"> LogOut </Button>
+          <Box>
+            <NavLink to="/dashboard"> <Button variant="contained"> Dashboard </Button></NavLink> 
+            
+            <Button onClick={logout} variant="contained"> LogOut </Button> 
+            </Box>
+        
           :
         <NavLink to="/login"> <Button variant="contained"> Login </Button></NavLink> 
       } 
