@@ -59,7 +59,7 @@ const Purchase = () => {
         <div>
             <h1 className="mb-5 mt-3 bg-info"> Welcome to Purchase Page  </h1>
 
-            <h1>Product id = </h1>
+           
             <br />
             <h3 >Product name : {exactProduct[0]?.name}</h3>
             <h6>Description :   {exactProduct[0]?.description} </h6>
