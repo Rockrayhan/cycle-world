@@ -18,7 +18,7 @@ const Products = () => {
                 {
                     products.map(product => <Product
                     products={product}
-                    key={product.id}
+                    key={product._id}
                     >
                     
                     </Product>).slice(4)
